@@ -468,7 +468,7 @@ projects :: [Project]
 projects =
   [ Project { projectName      = webWs
             , projectDirectory = "~/"
-            , projectStartHook = Just $ spawn "firefox -P 'default'"
+            , projectStartHook = Just $ spawn "brave"
             }
   , Project { projectName      = ossWs
             , projectDirectory = "~/"
@@ -487,7 +487,7 @@ projects =
             }
   , Project { projectName      = wrkWs
             , projectDirectory = "~/"
-            , projectStartHook = Just $ spawn "firefox -P 'chatroulette' -no-remote"
+            , projectStartHook = Just $ spawn "brave"
             }
   , Project { projectName      = sysWs
             , projectDirectory = "/etc/nixos/"

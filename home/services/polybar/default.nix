@@ -1,7 +1,7 @@
 { mainBar, openCalendar, config, pkgs, ... }:
 
 let
-  browser = "${pkgs.firefox-beta-bin}/bin/firefox";
+  browser = "${pkgs.brave}/bin/brave";
 
   xdgUtils = pkgs.xdg_utils.overrideAttrs (
     old: {

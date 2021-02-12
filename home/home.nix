@@ -10,6 +10,7 @@ let
     audacious            # simple music player
     betterlockscreen     # fast lockscreen based on i3lock
     bottom               # alternative to htop & ytop
+    brave		 # web browser 
     cachix               # nix caching
     calibre              # e-book reader
     dmenu                # application launcher
@@ -168,7 +169,7 @@ in
       sortKey = "PERCENT_CPU";
     };
 
-    jq.enable = true;
+     jq.enable = true;
     ssh.enable = true;
   };
 
