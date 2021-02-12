@@ -12,12 +12,13 @@ let
     bottom               # alternative to htop & ytop
     cachix               # nix caching
     calibre              # e-book reader
-    docker 		 # docker
+    dmenu                # application launcher
     docker-compose       # docker manager
     dive                 # explore docker layers
     exa                  # a better `ls`
     fd                   # "find" for files
     gimp                 # gnu image manipulation program
+    gnumake
     hms                  # custom home-manager switcher
     hyperfine            # command-line benchmarking tool
     insomnia             # rest client with graphql support

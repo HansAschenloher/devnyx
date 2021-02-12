@@ -3,7 +3,7 @@
 {
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${pkgs.termite}/bin/termite";
     theme = ./theme.rafi;
   };
 }

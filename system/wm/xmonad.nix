@@ -4,6 +4,11 @@
   services = {
     upower.enable = true;
 
+    dbus = {
+      enable = true;
+      packages = [ pkgs.gnome3.dconf ];
+    };
+
     xserver = {
       enable = true;
 
