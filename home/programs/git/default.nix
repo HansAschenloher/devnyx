@@ -21,6 +21,7 @@ in
       amend = "commit --amend -m";
       br = "branch";
       co = "checkout";
+      s  = "status";
       st = "status";
       ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
       ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
@@ -41,11 +42,8 @@ in
       "*.mill-version" # used by metals
       "*.jvmopts"      # should be local to every project
     ];
-    signing = {
-      key = "121D4302A64B2261";
-      signByDefault = true;
-    };
-    userEmail = "volpegabriel@gmail.com";
-    userName = "Gabriel Volpe";
+    #TODO signing
+    userEmail = "hansi.aschenloher@gmail.com";
+    userName = "Hans Aschenloher";
   };
 }
