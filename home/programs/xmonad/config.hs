@@ -57,7 +57,9 @@ import           XMonad.Layout.MultiToggle             ( Toggle(..)
 import           XMonad.Layout.MultiToggle.Instances   ( StdTransformers(NBFULL) )
 import           XMonad.Layout.NoBorders               ( smartBorders )
 import           XMonad.Layout.PerWorkspace            ( onWorkspace )
-import           XMonad.Layout.Spacing                 ( spacing )
+import           XMonad.Layout.Spacing                 ( spacingRaw
+                                                       , Border(..)
+                                                       )
 import           XMonad.Layout.ThreeColumns            ( ThreeCol(..) )
 import           XMonad.Prompt                         ( XPConfig(..)
                                                        , amberXPConfig
@@ -244,9 +246,9 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
     , key "Expand master"  (modm              , xK_l        ) $ sendMessage Expand
     , key "Switch to tile" (modm              , xK_t        ) $ withFocused (windows . W.sink)
     , key "Rotate slaves"  (modm .|. shiftMask, xK_Tab      ) rotSlavesUp
-    , key "Decrease size"  (modm              , xK_d        ) $ withFocused (keysResizeWindow (-10,-10) (1,1))
-    , key "Increase size"  (modm              , xK_s        ) $ withFocused (keysResizeWindow (10,10) (1,1))
-    , key "Decr  abs size" (modm .|. shiftMask, xK_d        ) $ withFocused (keysAbsResizeWindow (-10,-10) (1024,752))
+    , key "Decrease size"  (modm              , xK_d        ) $ withFocused (keysResizeWindow (10,10) (1,1)) --TODO
+    , key "Increase size"  (modm              , xK_s        ) $ withFocused (keysResizeWindow (10,10) (1,1)) 
+    , key "Decr  abs size" (modm .|. shiftMask, xK_d        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752)) --TODO
     , key "Incr  abs size" (modm .|. shiftMask, xK_s        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752))
     ] ^++^
   keySet "Workspaces"
@@ -339,7 +341,7 @@ myLayout =
 
      -- Gaps bewteen windows
      myGaps gap  = gaps [(U, gap),(D, gap),(L, gap),(R, gap)]
-     gapSpaced g = spacing g . myGaps g
+     gapSpaced g = spacingRaw True (Border 1 1 1 1) True (Border 1 1 1 1) True . myGaps g
 
      -- Per workspace layout
      comLayout = onWorkspace comWs (full ||| tiled)
