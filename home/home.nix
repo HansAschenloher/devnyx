@@ -1,7 +1,7 @@
 { config, lib, pkgs, stdenv, ... }:
 
 let
-  hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
+  #hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
 
   defaultPkgs = with pkgs; [
     act                  # run github actions locally
@@ -10,9 +10,10 @@ let
     audacious            # simple music player
     betterlockscreen     # fast lockscreen based on i3lock
     bottom               # alternative to htop & ytop
-    brave		 # web browser 
+    brave		 # web browser
     cachix               # nix caching
     calibre              # e-book reader
+    calc                 # random color support
     dmenu                # application launcher
     docker-compose       # docker manager
     dive                 # explore docker layers
@@ -20,9 +21,10 @@ let
     fd                   # "find" for files
     gimp                 # gnu image manipulation program
     gnumake
-    hms                  # custom home-manager switcher
+    #hms                  # custom home-manager switcher
     hyperfine            # command-line benchmarking tool
     insomnia             # rest client with graphql support
+    jetbrains.idea-ultimate #ItelliJ
     #k9s                  # k8s pods manager
     killall              # kill processes by name
     #libreoffice          # office suite
@@ -38,11 +40,13 @@ let
     playerctl            # music player controller
     prettyping           # a nicer ping
     pulsemixer           # pulseaudio mixer
+    pywal                # color shemes
     ripgrep              # fast grep
     rnix-lsp             # nix lsp server
     signal-desktop       # signal messaging client
     simplescreenrecorder # self-explanatory
     spotify              # music source
+    teamspeak_client     # TS3 Client
     tldr                 # summary of a man page
     tor 		 # tor browser
     vlc                  # media player
@@ -72,9 +76,16 @@ let
     nix-tree                # visualize nix dependencies
   ];
 
+  goLangPkgs = with pkgs; [
+    gocode-gomod
+    go
+  ];
+
   polybarPkgs = with pkgs; [
+    polybar
     font-awesome-ttf      # awesome fonts
     material-design-icons # fonts with glyphs
+    networkmanager_dmenu # netork modules
   ];
 
   xmonadPkgs = with pkgs; [
@@ -176,5 +187,4 @@ in
   services = {
     flameshot.enable = true;
   };
-
 }

@@ -181,7 +181,7 @@ myPolybarLogHook dbus = myLogHook <+> dynamicLogWithPP (polybarHook dbus)
 -- Key bindings. Add, modify or remove key bindings here.
 --
 
-myTerminal   = "alacritty"
+myTerminal   = "termite"
 appLauncher  = "rofi -modi drun,ssh,window -show drun -show-icons"
 screenLocker = "betterlockscreen -l dim"
 playerctl c  = "playerctl --player=spotify,%any " <> c
@@ -247,7 +247,7 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
     , key "Switch to tile" (modm              , xK_t        ) $ withFocused (windows . W.sink)
     , key "Rotate slaves"  (modm .|. shiftMask, xK_Tab      ) rotSlavesUp
     , key "Decrease size"  (modm              , xK_d        ) $ withFocused (keysResizeWindow (10,10) (1,1)) --TODO
-    , key "Increase size"  (modm              , xK_s        ) $ withFocused (keysResizeWindow (10,10) (1,1)) 
+    , key "Increase size"  (modm              , xK_s        ) $ withFocused (keysResizeWindow (10,10) (1,1))
     , key "Decr  abs size" (modm .|. shiftMask, xK_d        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752)) --TODO
     , key "Incr  abs size" (modm .|. shiftMask, xK_s        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752))
     ] ^++^

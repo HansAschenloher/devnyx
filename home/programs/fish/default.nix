@@ -8,9 +8,8 @@ let
 
   themeConfig = ''
     set -g theme_display_date no
-    set -g theme_nerd_fonts yes
     set -g theme_display_git_master_branch no
-    set -g theme_nerd_fonts yes
+    #set -g theme_nerd_fonts yes
     set -g theme_newline_cursor yes
     set -g theme_color_scheme solarized
   '';
@@ -42,7 +41,7 @@ in
       dcd  = "docker-compose down --remove-orphans";
       du   = "ncdu --color dark -rr -x";
       ls   = "exa";
-      ll   = "ls -a";
+      ll   = "exa -la";
       mfix = "mill mono.__.fix --rules OrganizeImports && mill mono._.reformat";
       ".." = "cd ..";
       ping = "prettyping";

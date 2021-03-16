@@ -1,7 +1,10 @@
-{ mainBar, openCalendar, config, pkgs, ... }:
+{ openCalendar, config, pkgs, ... }:
 
 let
   browser = "${pkgs.brave}/bin/brave";
+
+  mainBar = pkgs.callPackage ./bar.nix {};
+  openCalendar = "${pkgs.gnome3.gnome-calendar}/bin/gnome-calendar";
 
   xdgUtils = pkgs.xdg_utils.overrideAttrs (
     old: {
@@ -78,11 +81,11 @@ let
   customMods = mainBar + bctl + cal + github + mpris + xmonad;
 in
 {
-  xdg.configFile."polybar/github-notifications-token".source = ../../secrets/github-notifications-token;
+  #xdg.configFile."polybar/github-notifications-token".source = ../../secrets/github-notifications-token;
 
   services.polybar = {
     enable = true;
-    package = mypolybar;
+    #package = mypolybar;
     config = ./config.ini;
     extraConfig = bars + colors + mods1 + mods2 + customMods;
     script = ''
