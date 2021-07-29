@@ -77,7 +77,6 @@ in
     vimAlias     = true;
     vimdiffAlias = true;
     withNodeJs   = true; # for coc.nvim
-    withPython   = true; # for plugins
     withPython3  = true; # for plugins
   };
 

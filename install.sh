@@ -11,6 +11,7 @@ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 # Nix configuration
 sudo cp system/configuration.nix /etc/nixos/
 sudo cp -r system/wm/ /etc/nixos/
+sudo cp -r system/nvidia/ /etc/nixos/
 sudo nixos-rebuild -I nixpkgs=$PINNED_NIX_PKGS switch --upgrade
 
 # Manual steps

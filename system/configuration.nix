@@ -17,17 +17,18 @@ in
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # Window manager 
+      ./nvidia/cuda.nix
+      # Window manager
       ./wm/xmonad.nix
     ];
 
 
   ####### Bootloader ##################################################
-  
+
   boot.loader = {
     grub = {
       enable = true;
-      device = "/dev/sda";
+      device = "/dev/sdb";
     };
   };
 
@@ -36,7 +37,7 @@ in
   networking = {
     # Enables wireless support and openvpn via network manager.
     networkmanager = {
-      enable   = true;
+      enable   = false;
       packages = [ pkgs.networkmanager_openvpn ];
     };
 
@@ -56,7 +57,7 @@ in
   # Set time zone.
   time.timeZone = "Europe/Berlin";
 
-  # List packages installed in system profile. 
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     vim
     wget
@@ -74,6 +75,7 @@ in
   virtualisation = {
     docker = {
       enable = true;
+#      enableNvidia = true;
     };
    virtualbox.host = {
      enable = false;

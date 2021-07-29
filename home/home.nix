@@ -34,6 +34,7 @@ let
     neofetch             # command-line system information
     nix-doc              # nix documentation search tool
     manix                # documentation searcher for nix
+    multimc		 # minecraft-client
     pavucontrol          # pulseaudio volume control
     paprefs              # pulseaudio preferences
     pasystray            # pulseaudio systray
@@ -47,9 +48,11 @@ let
     simplescreenrecorder # self-explanatory
     spotify              # music source
     teamspeak_client     # TS3 Client
+    termite-unwrapped		 # terminal
     tldr                 # summary of a man page
     tor 		 # tor browser
     vlc                  # media player
+    unzip
     xclip                # clipboard support (also for neovim)
     zathura		 # pdf viewer
 
@@ -174,9 +177,8 @@ in
 
     gpg.enable = true;
 
-    htop = {
-      enable = true;
-      sortDescending = true;
+    htop.enable = true;
+    htop.settings = {
       sortKey = "PERCENT_CPU";
     };
 

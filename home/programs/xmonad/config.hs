@@ -100,7 +100,7 @@ main :: IO ()
 main = mkDbusClient >>= main'
 
 main' :: D.Client -> IO ()
-main' dbus = xmonad . docks . ewmh . dynProjects . keybindings . urgencyHook $ def
+main' dbus = xmonad . docks . ewmh . keybindings . urgencyHook $ def
   { terminal           = myTerminal
   , focusFollowsMouse  = False
   , clickJustFocuses   = False
@@ -192,7 +192,7 @@ showKeybindings x = addName "Show Keybindings" . io $
 
 myKeys conf@XConfig {XMonad.modMask = modm} =
   keySet "Applications"
-    [ key "Slack"         (modm                , xK_F2      ) $ spawnOn comWs "slack"
+    [ key "brave"         (modm                , xK_b      ) $ spawn "brave"
     ] ^++^
   keySet "Audio"
     [ key "Mute"          (0, xF86XK_AudioMute              ) $ spawn "amixer -q set Master toggle"
@@ -229,8 +229,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
   keySet "Screens" switchScreen ^++^
   keySet "System"
     [ key "Toggle status bar gap" (modm              , xK_b ) toggleStruts
-    , key "Logout (quit XMonad)"  (modm .|. shiftMask, xK_q ) $ io exitSuccess
-    , key "Restart XMonad"        (modm              , xK_q ) $ spawn "xmonad --recompile; xmonad --restart"
+    , key "Logout (quit XMonad)"  (modm .|. shiftMask .|. controlMask, xK_q ) $ io exitSuccess
+    , key "Restart XMonad"        (modm .|. shiftMask .|. controlMask, xK_r ) $ spawn "xmonad --recompile; xmonad --restart"
     , key "Capture entire screen" (modm          , xK_Print ) $ spawn "flameshot full -p ~/Pictures/flameshot/"
     ] ^++^
   keySet "Windows"
@@ -245,8 +245,8 @@ myKeys conf@XConfig {XMonad.modMask = modm} =
     , key "Shrink master"  (modm              , xK_h        ) $ sendMessage Shrink
     , key "Expand master"  (modm              , xK_l        ) $ sendMessage Expand
     , key "Switch to tile" (modm              , xK_t        ) $ withFocused (windows . W.sink)
-    , key "Rotate slaves"  (modm .|. shiftMask, xK_Tab      ) rotSlavesUp
-    , key "Decrease size"  (modm              , xK_d        ) $ withFocused (keysResizeWindow (10,10) (1,1)) --TODO
+    , key "Rotate slaves"  (modm .|. shiftMask, xK_Tab      ) $ rotSlavesUp
+    , key "Decrease size"  (modm              , xK_d        ) $ withFocused (keysResizeWindow (-10,-10) (1,1)) --TODO
     , key "Increase size"  (modm              , xK_s        ) $ withFocused (keysResizeWindow (10,10) (1,1))
     , key "Decr  abs size" (modm .|. shiftMask, xK_d        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752)) --TODO
     , key "Incr  abs size" (modm .|. shiftMask, xK_s        ) $ withFocused (keysAbsResizeWindow (10,10) (1024,752))
@@ -481,9 +481,7 @@ projects =
             }
   , Project { projectName      = comWs
             , projectDirectory = "~/"
-            , projectStartHook = Just $ do spawn "telegram-desktop"
-                                           spawn "element-desktop"
-                                           spawn "signal-desktop"
+            , projectStartHook = Just $ do spawn "signal-desktop"
             }
   , Project { projectName      = wrkWs
             , projectDirectory = "~/"
@@ -524,4 +522,4 @@ myEventHook = docksEventHook <+> ewmhDesktopsEventHook <+> fullscreenEventHook
 -- Perform an arbitrary action on each internal state change or X event.
 -- See the 'XMonad.Hooks.DynamicLog' extension for examples.
 --
-myLogHook = fadeInactiveLogHook 0.9
+myLogHook = fadeInactiveLogHook 1
