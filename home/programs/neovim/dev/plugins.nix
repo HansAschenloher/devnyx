@@ -12,16 +12,6 @@
     };
   };
 
-  #nvim-lsp = buildVimPlugin {
-    #name = "nvim-lsp";
-    #src  = fetchFromGitHub {
-      #owner  = "neovim";
-      #repo   = "nvim-lsp";
-      #rev    = "3f7223659f39273c5fe4f2f2d7ee8baa827a9cfb";
-      #sha256 = "104439qy1nqgzxrj8pfvd05shnpywm0qj1w68rm701hwpig6j7q6";
-    #};
-  #};
-
   nvim-metals = buildVimPlugin {
     name = "nvim-metals";
     src  = fetchFromGitHub {

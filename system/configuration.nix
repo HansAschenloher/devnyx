@@ -37,7 +37,7 @@ in
   networking = {
     # Enables wireless support and openvpn via network manager.
     networkmanager = {
-      enable   = false;
+      enable   = true;
       packages = [ pkgs.networkmanager_openvpn ];
     };
 
@@ -59,7 +59,7 @@ in
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim
+    neovim
     wget
   ];
 
@@ -75,7 +75,7 @@ in
   virtualisation = {
     docker = {
       enable = true;
-#      enableNvidia = true;
+      enableNvidia = false;
     };
    virtualbox.host = {
      enable = false;
@@ -155,6 +155,5 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
-
+  system.stateVersion = "21.05"; # Did you read the comment?
 }

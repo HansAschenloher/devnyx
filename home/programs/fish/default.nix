@@ -21,8 +21,9 @@ let
     src = pkgs.fishPlugins.foreign-env.src;
   };
 
+
+    # bind \t accept-autosuggestion
   fishConfig = ''
-    bind \t accept-autosuggestion
     set fish_greeting
   '' + fzfConfig + themeConfig;
 in
@@ -45,6 +46,7 @@ in
       mfix = "mill mono.__.fix --rules OrganizeImports && mill mono._.reformat";
       ".." = "cd ..";
       ping = "prettyping";
+      grep = "rg";
     };
     shellInit = fishConfig;
   };

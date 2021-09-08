@@ -4,13 +4,14 @@ let
   #hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
 
   defaultPkgs = with pkgs; [
-    act                  # run github actions locally
+    #act                  # run github actions locally
+    alacritty            # terminaljk
     any-nix-shell        # fish support for nix shell
     asciinema            # record the terminal
     audacious            # simple music player
     betterlockscreen     # fast lockscreen based on i3lock
     bottom               # alternative to htop & ytop
-    brave		 # web browser
+    brave		             # web browser
     cachix               # nix caching
     calibre              # e-book reader
     calc                 # random color support
@@ -29,12 +30,12 @@ let
     killall              # kill processes by name
     #libreoffice          # office suite
     libnotify            # notify-send command
-    lazydocker		 # docker-compose viewer
+    lazydocker		       # docker-compose viewer
     ncdu                 # disk space info (a better du)
     neofetch             # command-line system information
     nix-doc              # nix documentation search tool
     manix                # documentation searcher for nix
-    multimc		 # minecraft-client
+    multimc		           # minecraft-client
     pavucontrol          # pulseaudio volume control
     paprefs              # pulseaudio preferences
     pasystray            # pulseaudio systray
@@ -44,17 +45,17 @@ let
     pywal                # color shemes
     ripgrep              # fast grep
     rnix-lsp             # nix lsp server
+    shutter              # Screenshot utility
     signal-desktop       # signal messaging client
     simplescreenrecorder # self-explanatory
     spotify              # music source
     teamspeak_client     # TS3 Client
-    termite-unwrapped		 # terminal
     tldr                 # summary of a man page
-    tor 		 # tor browser
+    tor 		             # tor browser
     vlc                  # media player
     unzip
     xclip                # clipboard support (also for neovim)
-    zathura		 # pdf viewer
+    zathura		           # pdf viewer
 
     # fixes the `ar` error required by cabal
     binutils-unwrapped
@@ -125,7 +126,7 @@ in
   home = {
     username      = "hans";
     homeDirectory = "/home/hans";
-    stateVersion  = "20.09";
+    stateVersion  = "21.05";
 
     packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ polybarPkgs ++ xmonadPkgs;
 
@@ -167,7 +168,7 @@ in
     direnv = {
       enable = true;
       enableFishIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv.enable = true;
     };
 
     fzf = {

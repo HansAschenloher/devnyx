@@ -6,7 +6,6 @@
 
     dbus = {
       enable = true;
-      packages = [ pkgs.gnome3.dconf ];
     };
 
     xserver = {
@@ -22,7 +21,7 @@
 
       libinput = {
         enable = true;
-        touchpad.disableWhileTyping = true;
+        touchpad.disableWhileTyping = false;
       };
 
       serverLayoutSection = ''
@@ -45,8 +44,8 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  hardware.bluetooth.enable = false;
+  services.blueman.enable = false;
 
   systemd.services.upower.enable = true;
 }
