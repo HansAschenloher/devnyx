@@ -1,7 +1,7 @@
 { config, lib, pkgs, stdenv, ... }:
 
 let
-  #hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
+  hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
 
   defaultPkgs = with pkgs; [
     #act                  # run github actions locally
@@ -22,7 +22,7 @@ let
     fd                   # "find" for files
     gimp                 # gnu image manipulation program
     gnumake
-    #hms                  # custom home-manager switcher
+    hms                  # custom home-manager switcher
     hyperfine            # command-line benchmarking tool
     insomnia             # rest client with graphql support
     jetbrains.idea-ultimate #ItelliJ
@@ -86,7 +86,7 @@ let
   ];
 
   polybarPkgs = with pkgs; [
-    polybar
+    #polybar
     font-awesome-ttf      # awesome fonts
     material-design-icons # fonts with glyphs
     networkmanager_dmenu # netork modules
@@ -147,14 +147,14 @@ in
 
   gtk = {
     enable = true;
-    iconTheme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome3.adwaita-icon-theme;
-    };
-    theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome3.adwaita-icon-theme;
-    };
+    #iconTheme = {
+      #name = "Adwaita-dark";
+      #package = pkgs.gnome3.adwaita-icon-theme;
+    #};
+    #theme = {
+      #name = "Adwaita-dark";
+      #package = pkgs.gnome3.adwaita-icon-theme;
+    #};
   };
 
   programs = {

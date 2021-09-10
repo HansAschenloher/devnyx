@@ -1,9 +1,9 @@
 [
-  ./dunst
+  #./dunst
 #  ./gpg-agent
-  ./networkmanager
-  ./picom
+#  ./networkmanager
+  #./picom
   ./polybar
-  ./screenlocker
-  ./udiskie
+  #./screenlocker
+ # ./udiskie
 ]

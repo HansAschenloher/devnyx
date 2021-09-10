@@ -1,10 +1,11 @@
-{ openCalendar, config, pkgs, ... }:
+{config, pkgs, ... }:
 
 let
   browser = "${pkgs.brave}/bin/brave";
 
   mainBar = pkgs.callPackage ./bar.nix {};
   openCalendar = "${pkgs.gnome3.gnome-calendar}/bin/gnome-calendar";
+  #openCalendar = "null";
 
   xdgUtils = pkgs.xdg_utils.overrideAttrs (
     old: {
@@ -85,7 +86,7 @@ in
 
   services.polybar = {
     enable = true;
-    #package = mypolybar;
+    package = mypolybar;
     config = ./config.ini;
     extraConfig = bars + colors + mods1 + mods2 + customMods;
     script = ''

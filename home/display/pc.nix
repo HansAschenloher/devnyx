@@ -3,9 +3,7 @@
 
 let
   base = pkgs.callPackage ../home.nix { inherit config lib pkgs stdenv; };
-
   hdmiBar = pkgs.callPackage ../services/polybar/bar.nix {};
-
   myspotify = import ../programs/spotify/default.nix {
     opts = "-force-device-scale-factor=1.4 %U";
     inherit pkgs;
@@ -14,16 +12,16 @@ let
   statusBar = import ../services/polybar/default.nix {
     inherit config pkgs;
     mainBar = hdmiBar;
-    openCalendar = "${pkgs.gnome3.gnome-calendar}/bin/gnome-calendar";
+    #openCalendar = "${pkgs.gnome3.gnome-calendar}/bin/gnome-calendar";
   };
 
-  #terminal  = import ../programs/alacritty/default.nix { fontSize = 10; inherit pkgs; };
+  terminal  = import ../programs/alacritty/default.nix { fontSize = 10; inherit pkgs; };
 in
 {
   imports = [
     statusBar
     ../home.nix
-    #terminal
+    terminal
   ];
 
   home.packages = base.home.packages ++ [ myspotify ];

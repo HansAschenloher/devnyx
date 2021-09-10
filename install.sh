@@ -9,6 +9,7 @@ export PINNED_NIX_PKGS="https://github.com/NixOS/nixpkgs/archive/891f607d530.tar
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 
 rm -rf ~/.xmonad/*
+rm -rf ~/.config/*
 
 # Nix configuration
 sudo cp system/configuration.nix /etc/nixos/
