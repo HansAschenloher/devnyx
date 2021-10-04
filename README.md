@@ -12,7 +12,7 @@ My current, and always evolving, NixOS configuration for development and univers
 | Launcher       | [Rofi](https://github.com/davatorium/rofi) |
 | Shell          | [Fish](https://fishshell.com/) |
 | Status Bar     | [Polybar](https://polybar.github.io/) |
-| Terminal       | [Termite](https://github.com/thestinger/termite) |
+| Terminal       | [Alacritty](https://github.com/alacritty/alacritty) |
 | Window Manager | [XMonad](https://xmonad.org/) |
 
 ## Structure

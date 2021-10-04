@@ -4,7 +4,7 @@ let
   hms = pkgs.callPackage ./switcher.nix { inherit config pkgs; };
 
   defaultPkgs = with pkgs; [
-    #act                  # run github actions locally
+    # act                  # run github actions locally
     alacritty            # terminaljk
     any-nix-shell        # fish support for nix shell
     asciinema            # record the terminal
@@ -34,6 +34,7 @@ let
     ncdu                 # disk space info (a better du)
     neofetch             # command-line system information
     nix-doc              # nix documentation search tool
+    nix-tree             # to analyse nix dependencies
     manix                # documentation searcher for nix
     multimc		           # minecraft-client
     pavucontrol          # pulseaudio volume control
@@ -49,7 +50,9 @@ let
     signal-desktop       # signal messaging client
     simplescreenrecorder # self-explanatory
     spotify              # music source
+    steam
     teamspeak_client     # TS3 Client
+    tmux
     tldr                 # summary of a man page
     tor 		             # tor browser
     vlc                  # media player
@@ -61,6 +64,11 @@ let
     binutils-unwrapped
   ];
 
+  nvimPkgs = with pkgs; [
+    rnix-lsp
+    texlab
+
+  ];
 
   gitPkgs = with pkgs.gitAndTools; [
     diff-so-fancy # git diff with colors
@@ -77,7 +85,7 @@ let
     ghc                     # compiler
     haskell-language-server # haskell IDE (ships with ghcide)
     hoogle                  # documentation
-    nix-tree                # visualize nix dependencies
+    ghcide
   ];
 
   goLangPkgs = with pkgs; [
@@ -89,7 +97,7 @@ let
     #polybar
     font-awesome-ttf      # awesome fonts
     material-design-icons # fonts with glyphs
-    networkmanager_dmenu # netork modules
+    networkmanager_dmenu  # netork modules
   ];
 
   xmonadPkgs = with pkgs; [
@@ -103,6 +111,13 @@ let
     xorg.xmodmap           # keymaps modifier
     xorg.xrandr            # display manager (X Resize and Rotate protocol)
   ];
+
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      nativeOnly = true;
+    };
+  };
 
 in
 {
@@ -128,7 +143,7 @@ in
     homeDirectory = "/home/hans";
     stateVersion  = "21.05";
 
-    packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ polybarPkgs ++ xmonadPkgs;
+    packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ polybarPkgs ++ xmonadPkgs ++ nvimPkgs;
 
     sessionVariables = {
       DISPLAY = ":0";

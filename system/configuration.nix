@@ -57,11 +57,6 @@ in
   # Set time zone.
   time.timeZone = "Europe/Berlin";
 
-  # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-  ];
 
   # List services that you want to enable:
 
@@ -70,6 +65,14 @@ in
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
+  # List packages installed in system profile.
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+  ];
+
+##### Virtualisierung ############################################################
 
   # Enable Docker & VirtualBox support.
   virtualisation = {
@@ -147,6 +150,13 @@ in
 
     # Required by Cachix to be used as non-root user
     trustedUsers = [ "root" "hans" ];
+  };
+
+
+  systemd.services = {
+    networkmanager-wait-online = {
+      enable = false;
+    };
   };
 
   # This value determines the NixOS release from which the default

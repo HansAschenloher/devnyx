@@ -31,18 +31,9 @@ let
   mods1  = builtins.readFile ./modules.ini;
   mods2  = builtins.readFile ./user_modules.ini;
 
-  bluetoothScript = pkgs.callPackage ./scripts/bluetooth.nix {};
   monitorScript   = pkgs.callPackage ./scripts/monitor.nix {};
   mprisScript     = pkgs.callPackage ./scripts/mpris.nix {};
   networkScript   = pkgs.callPackage ./scripts/network.nix {};
-
-  bctl = ''
-    [module/bctl]
-    type = custom/script
-    exec = ${bluetoothScript}/bin/bluetooth-ctl
-    tail = true
-    click-left = ${bluetoothScript}/bin/bluetooth-ctl --toggle &
-  '';
 
   cal = ''
     [module/clickable-date]
@@ -79,7 +70,7 @@ let
     tail = true
   '';
 
-  customMods = mainBar + bctl + cal + github + mpris + xmonad;
+  customMods = mainBar + cal + github + mpris + xmonad;
 in
 {
   #xdg.configFile."polybar/github-notifications-token".source = ../../secrets/github-notifications-token;

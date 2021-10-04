@@ -1,7 +1,8 @@
 [
   ./git
   ./fish
-  ./neovim
+  #./neovim
   ./rofi
   ./xmonad
+  ./nvim
 ]

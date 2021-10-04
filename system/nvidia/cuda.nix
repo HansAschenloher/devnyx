@@ -22,6 +22,7 @@
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "21.05";
+  hardware.opengl.driSupport32Bit = true;
 
 }
 
