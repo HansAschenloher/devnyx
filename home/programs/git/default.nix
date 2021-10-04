@@ -12,6 +12,7 @@ let
       prompt = false;
     };
     pull.rebase = false;
+    credential.helper = cache;
   };
 in
 {
