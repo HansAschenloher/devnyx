@@ -17,6 +17,7 @@ sudo cp -r system/wm/ /etc/nixos/
 sudo cp -r system/nvidia/ /etc/nixos/
 sudo nixos-rebuild -I nixpkgs=$PINNED_NIX_PKGS switch --upgrade --show-trace
 
+
 # Manual steps
 mkdir -p $HOME/.config/polybar/logs
 touch $HOME/.config/polybar/logs/bottom.log
@@ -31,7 +32,7 @@ nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz ho
 nix-channel --update
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 nix-shell '<home-manager>' -A install
-#cp home/nixos.png $HOME/Pictures/
+cp home/nixos.png $HOME/Pictures/
 home-manager switch --show-trace
 
 # Set screenlock wallpaper

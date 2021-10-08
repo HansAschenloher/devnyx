@@ -36,7 +36,6 @@ let
     nix-doc              # nix documentation search tool
     nix-tree             # to analyse nix dependencies
     manix                # documentation searcher for nix
-    multimc		           # minecraft-client
     pavucontrol          # pulseaudio volume control
     paprefs              # pulseaudio preferences
     pasystray            # pulseaudio systray
@@ -50,7 +49,6 @@ let
     signal-desktop       # signal messaging client
     simplescreenrecorder # self-explanatory
     spotify              # music source
-    steam
     teamspeak_client     # TS3 Client
     tmux
     tldr                 # summary of a man page
@@ -119,6 +117,15 @@ let
     };
   };
 
+  tiPkgs = with pkgs; [
+    stack
+    z3
+    minisat
+    picosat
+  ];
+
+  uniPkgs = tiPkgs;
+
 in
 {
   programs.home-manager.enable = true;
@@ -143,7 +150,7 @@ in
     homeDirectory = "/home/hans";
     stateVersion  = "21.05";
 
-    packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ polybarPkgs ++ xmonadPkgs ++ nvimPkgs;
+    packages = defaultPkgs ++ gitPkgs ++ haskellPkgs ++ polybarPkgs ++ xmonadPkgs ++ nvimPkgs ++ uniPkgs;
 
     sessionVariables = {
       DISPLAY = ":0";

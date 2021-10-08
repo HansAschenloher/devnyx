@@ -465,7 +465,8 @@ sysWs = "sys"
 etcWs = "etc"
 
 myWS :: [WorkspaceId]
-myWS = [webWs, ossWs, devWs, comWs, wrkWs, sysWs, etcWs]
+-- myWS = [webWs, ossWs, devWs, comWs, wrkWs, sysWs, etcWs]
+myWS = map (\x -> show x) [1..9]
 
 ------------------------------------------------------------------------
 -- Dynamic Projects

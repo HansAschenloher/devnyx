@@ -17,7 +17,7 @@ in
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./nvidia/cuda.nix
+      #./nvidia/cuda.nix
       # Window manager
       ./wm/xmonad.nix
     ];
@@ -28,7 +28,7 @@ in
   boot.loader = {
     grub = {
       enable = true;
-      device = "/dev/sdb";
+      device = "/dev/sda";
     };
   };
 

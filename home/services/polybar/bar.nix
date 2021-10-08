@@ -3,7 +3,7 @@
 let
   bar = ''
     [bar/main]
-    monitor = ''${env:MONITOR:DP-0}
+    monitor = ''${env:MONITOR:eDP-1}
     width = 100%
     height = 48
     radius = 6.0

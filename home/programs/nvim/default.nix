@@ -8,6 +8,11 @@ let
 	      vim-surround
         nvim-lspconfig
         coc-texlab
+        coc-nvim                # LSP client + autocompletion plugin
+        coc-metals              # Scala LSP client for CoC
+        coc-yank                # yank plugin for CoC
+        dhall-vim               # Syntax highlighting for Dhall lang
+        ghcid                   # ghcid for Haskell
   ];
 
   baseConfig    = builtins.readFile ./config/config.vim;

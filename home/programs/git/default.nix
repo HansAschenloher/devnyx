@@ -12,7 +12,7 @@ let
       prompt = false;
     };
     pull.rebase = false;
-    credential.helper = cache;
+    credential.helper = "cache";
   };
 in
 {
